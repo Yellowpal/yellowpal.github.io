@@ -10,20 +10,22 @@
         content="Yellow"/>
 
   
-  <meta name="description" content="最近黑苹果升级10.15.4的时候中间提示失败了，但是重新进入系统是提示升级成功了，不过启动引导残留了下来了个Boot MAC OS Install from MAC的选项，最要命的是还是默认启动项，网上搜索一番无果后自己查看了下本地"/>
+  <meta name="description" content="Yellowpal的博客"/>
   
 
   
   
-  <meta name="keywords" content="黑苹果, 删除install启动项"/>
+  <meta name="keywords" content="Hugo, Yellowpal, 博客"/>
   
 
   
-  <link rel="canonical" href="https://blog.yellowpal.win/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/"/>
+  <link rel="canonical" href="https://blog.yellowpal.win/tags/redis/"/>
 
   
+  <link rel="alternate" type="application/rss&#43;xml" href="https://blog.yellowpal.win/tags/redis/index.xml">
+  
 
-  <title>黑苹果升级后删除Boot MAC OS Install From MAC启动项 &middot; Yellowpal的小破站</title>
+  <title>redis &middot; Yellowpal的小破站</title>
 
   <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico"/>
   <link rel="stylesheet" href="https://blog.yellowpal.win/css/animate.min.css"/>
@@ -89,37 +91,22 @@
 </div>
 
   <div class="content">
-    <div class="post_page">
-      <div class="post animated fadeInDown">
-        <div class="post_title post_detail_title">
-          <h2><a href='/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/'>黑苹果升级后删除Boot MAC OS Install From MAC启动项</a></h2>
-          <span class="date">2020.04.03</span>
-        </div>
-        <div class="post_content markdown"><p>最近黑苹果升级10.15.4的时候中间提示失败了，但是重新进入系统是提示升级成功了，不过启动引导残留了下来了个Boot MAC OS Install from MAC的选项，最要命的是还是默认启动项，网上搜索一番无果后自己查看了下本地目录的文件，最终找到了需要删除的文件在这个目录下/System/Volumes/Data，删除命令如下：</p>
-
-<pre><code class="language-shell">sudo rm -rf /System/Volumes/Data/macOS\ Install\ Data
-</code></pre>
-
-<p>之后重启一切正常，残留的引导项成功被删了。</p>
-</div>
-        <div class="post_footer">
-          
-          <div class="meta">
-            <div class="info">
-              <span class="field tags">
-                <i class="remixicon-stack-line"></i>
-                
-                <a href="https://blog.yellowpal.win/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">黑苹果</a>
-                
-              </span>
-            </div>
+    <div class="list_with_title">
+      
+      <div class="listing_title">2020</div>
+      <div class="listing">
+        
+        <div class="listing_item">
+          <div class="listing_post">
+            <a href="/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/">Redis哨兵bind配置的坑</a>
+            <div class="post_time"><span class="date">03-17</span></div>
           </div>
-          
         </div>
+        
       </div>
       
-      
     </div>
+    <div class="pagination"></div>
   </div>
   <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
 </div>

@@ -10,20 +10,20 @@
         content="Yellow"/>
 
   
-  <meta name="description" content="最近黑苹果升级10.15.4的时候中间提示失败了，但是重新进入系统是提示升级成功了，不过启动引导残留了下来了个Boot MAC OS Install from MAC的选项，最要命的是还是默认启动项，网上搜索一番无果后自己查看了下本地"/>
+  <meta name="description" content="最近项目里需要对redis的主从搭建哨兵监控，其中遇到了一个redis 4.0.X的坑。因为之前在本地虚拟机测试搭建的时候用的是redis 5.0的，当时把哨兵的配置拷贝到4.0的时候遇到的问题是 哨兵之间"/>
   
 
   
   
-  <meta name="keywords" content="黑苹果, 删除install启动项"/>
+  <meta name="keywords" content="redis, 哨兵"/>
   
 
   
-  <link rel="canonical" href="https://blog.yellowpal.win/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/"/>
+  <link rel="canonical" href="https://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/"/>
 
   
 
-  <title>黑苹果升级后删除Boot MAC OS Install From MAC启动项 &middot; Yellowpal的小破站</title>
+  <title>Redis哨兵bind配置的坑 &middot; Yellowpal的小破站</title>
 
   <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico"/>
   <link rel="stylesheet" href="https://blog.yellowpal.win/css/animate.min.css"/>
@@ -92,15 +92,20 @@
     <div class="post_page">
       <div class="post animated fadeInDown">
         <div class="post_title post_detail_title">
-          <h2><a href='/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/'>黑苹果升级后删除Boot MAC OS Install From MAC启动项</a></h2>
-          <span class="date">2020.04.03</span>
+          <h2><a href='/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/'>Redis哨兵bind配置的坑</a></h2>
+          <span class="date">2020.03.17</span>
         </div>
-        <div class="post_content markdown"><p>最近黑苹果升级10.15.4的时候中间提示失败了，但是重新进入系统是提示升级成功了，不过启动引导残留了下来了个Boot MAC OS Install from MAC的选项，最要命的是还是默认启动项，网上搜索一番无果后自己查看了下本地目录的文件，最终找到了需要删除的文件在这个目录下/System/Volumes/Data，删除命令如下：</p>
+        <div class="post_content markdown"><p>最近项目里需要对redis的主从搭建哨兵监控，其中遇到了一个redis 4.0.X的坑。因为之前在本地虚拟机测试搭建的时候用的是redis 5.0的，当时把哨兵的配置拷贝到4.0的时候遇到的问题是 <strong>哨兵之间一直无法进行通信</strong>。其中关键的配置是bind的配置，在4.0下bind的IP配置需要将回环地址写在最后，5.0没这个问题，所以导致我卡在这个地方很久。关键的配置实例如下：</p>
 
-<pre><code class="language-shell">sudo rm -rf /System/Volumes/Data/macOS\ Install\ Data
+<pre><code class="language-shell">bind 192.168.1.xx 127.0.0.1
 </code></pre>
 
-<p>之后重启一切正常，残留的引导项成功被删了。</p>
+<p>惊醒自己：</p>
+
+<ol>
+<li>本地测试用的版本要跟实际使用的版本一致。</li>
+<li>多读源码</li>
+</ol>
 </div>
         <div class="post_footer">
           
@@ -109,7 +114,7 @@
               <span class="field tags">
                 <i class="remixicon-stack-line"></i>
                 
-                <a href="https://blog.yellowpal.win/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">黑苹果</a>
+                <a href="https://blog.yellowpal.win/tags/redis/">redis</a>
                 
               </span>
             </div>
