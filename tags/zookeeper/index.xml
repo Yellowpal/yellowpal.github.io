@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zookeeper on Yellowpal的小破站</title>
+    <link>https://blog.yellowpal.win/tags/zookeeper/</link>
+    <description>Recent content in zookeeper on Yellowpal的小破站</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Aug 2019 15:03:13 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.yellowpal.win/tags/zookeeper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zookeeper基础</title>
+      <link>https://blog.yellowpal.win/posts/zookeeper-base/</link>
+      <pubDate>Sat, 17 Aug 2019 15:03:13 +0000</pubDate>
+      
+      <guid>https://blog.yellowpal.win/posts/zookeeper-base/</guid>
+      <description>zoo.cfg配置文件 tickTime：用于计算的时间单元。比如session超时：N*tickTime initLImit：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tick</description>
+    </item>
+    
+  </channel>
+</rss>

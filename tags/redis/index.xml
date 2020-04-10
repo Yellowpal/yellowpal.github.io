@@ -13,10 +13,10 @@
     
     <item>
       <title>Redis哨兵bind配置的坑</title>
-      <link>https://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/</link>
+      <link>https://blog.yellowpal.win/posts/redis-sentinel-bind/</link>
       <pubDate>Tue, 17 Mar 2020 11:34:33 +0800</pubDate>
       
-      <guid>https://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/</guid>
+      <guid>https://blog.yellowpal.win/posts/redis-sentinel-bind/</guid>
       <description>最近项目里需要对redis的主从搭建哨兵监控，其中遇到了一个redis 4.0.X的坑。因为之前在本地虚拟机测试搭建的时候用的是redis 5.0的，当时把哨兵的配置拷贝到4.0的时候遇到的问题是 哨兵之间</description>
     </item>
     
