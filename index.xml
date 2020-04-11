@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Yellowpal的小破站</title>
-    <link>https://blog.yellowpal.win/</link>
+    <link>http://blog.yellowpal.win/</link>
     <description>Recent content on Yellowpal的小破站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 Apr 2020 22:20:22 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yellowpal.win/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.yellowpal.win/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>黑苹果升级后删除Boot MAC OS Install From MAC启动项</title>
-      <link>https://blog.yellowpal.win/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/</link>
+      <link>http://blog.yellowpal.win/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/</link>
       <pubDate>Fri, 03 Apr 2020 22:20:22 +0800</pubDate>
       
-      <guid>https://blog.yellowpal.win/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/</guid>
+      <guid>http://blog.yellowpal.win/posts/%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%8D%87%E7%BA%A7%E5%90%8E%E5%88%A0%E9%99%A4boot-mac-os-install-from-mac%E5%90%AF%E5%8A%A8%E9%A1%B9/</guid>
       <description>最近黑苹果升级10.15.4的时候中间提示失败了，但是重新进入系统是提示升级成功了，不过启动引导残留了下来了个Boot MAC OS Install from MAC的选项，最要命的是还是默认启动项，网上搜索一番无果后自己查看了下本地</description>
     </item>
     
     <item>
       <title>Redis哨兵bind配置的坑</title>
-      <link>https://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/</link>
+      <link>http://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/</link>
       <pubDate>Tue, 17 Mar 2020 11:34:33 +0800</pubDate>
       
-      <guid>https://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/</guid>
+      <guid>http://blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/</guid>
       <description>最近项目里需要对redis的主从搭建哨兵监控，其中遇到了一个redis 4.0.X的坑。因为之前在本地虚拟机测试搭建的时候用的是redis 5.0的，当时把哨兵的配置拷贝到4.0的时候遇到的问题是 哨兵之间</description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>https://blog.yellowpal.win/about/</link>
+      <link>http://blog.yellowpal.win/about/</link>
       <pubDate>Wed, 21 Aug 2019 14:13:58 +0800</pubDate>
       
-      <guid>https://blog.yellowpal.win/about/</guid>
+      <guid>http://blog.yellowpal.win/about/</guid>
       <description>邮箱：yellowpal@qq.com</description>
     </item>
     
     <item>
       <title>zookeeper基础</title>
-      <link>https://blog.yellowpal.win/posts/zookeeper%E5%9F%BA%E7%A1%80/</link>
+      <link>http://blog.yellowpal.win/posts/zookeeper%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Sat, 17 Aug 2019 15:03:13 +0000</pubDate>
       
-      <guid>https://blog.yellowpal.win/posts/zookeeper%E5%9F%BA%E7%A1%80/</guid>
+      <guid>http://blog.yellowpal.win/posts/zookeeper%E5%9F%BA%E7%A1%80/</guid>
       <description>zoo.cfg配置文件 tickTime：用于计算的时间单元。比如session超时：N*tickTime initLImit：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tick</description>
     </item>
     
     <item>
       <title>虚拟机性能监控与故障处理工具</title>
-      <link>https://blog.yellowpal.win/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/</link>
+      <link>http://blog.yellowpal.win/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Wed, 14 Aug 2019 19:48:25 +0000</pubDate>
       
-      <guid>https://blog.yellowpal.win/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://blog.yellowpal.win/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/</guid>
       <description>1. 主要命令监控工具用途 名称 主要作用 jps JVM Process Status Tool， 显示指定系统内所有HotSpot虚拟机进程 jstat JVM Statistics Monitoring Tool，用于手机HotSpot虚拟机各方面的运行数据 jinfo Configuration Info for Java，显示虚拟机配置信息 jmap Memory Map for</description>
     </item>
     
