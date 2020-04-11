@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="Yellow"/>
+
+  
+  <meta name="description" content="zoo.cfg配置文件 tickTime：用于计算的时间单元。比如session超时：N*tickTime initLImit：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tick"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, Yellowpal, 博客"/>
+  
+
+  
+  <link rel="canonical" href="https://blog.yellowpal.win/posts/zookeeper%E5%9F%BA%E7%A1%80/"/>
+
+  
+
+  <title>zookeeper基础 &middot; Yellowpal的小破站</title>
+
+  <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://blog.yellowpal.win/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://blog.yellowpal.win/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://blog.yellowpal.win/css/zozo.css"/>
+  <link rel="stylesheet" href="https://blog.yellowpal.win/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/categories/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://blog.yellowpal.win/">
+          <span>Yellowpal的小破站</span>
+          <img src="https://blog.yellowpal.win/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">热爱生命，敬畏自然</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/Yellowpal" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        <a href="https://blog.yellowpal.win/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/zookeeper%E5%9F%BA%E7%A1%80/'>zookeeper基础</a></h2>
+          <span class="date">2019.08.17</span>
+        </div>
+        <div class="post_content markdown">
+
+<h1 id="zoo-cfg配置文件">zoo.cfg配置文件</h1>
+
+<ul>
+<li><p>tickTime：用于计算的时间单元。比如session超时：N*tickTime</p></li>
+
+<li><p>initLImit：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tickTime的倍数来表示</p></li>
+
+<li><p>syncLimit：用于集群，master主节点与从节点之间发送消息，请求和应答时间的长度。（心跳机制）</p></li>
+
+<li><p>dataDir：数据存放位置，必须配置。</p></li>
+
+<li><p>dataLogDir：日志目录，如果不配置会和dataDir公用。</p></li>
+
+<li><p>clientPort：连接服务器的端口，默认2181</p></li>
+</ul>
+
+<h1 id="基本概念">基本概念</h1>
+
+<ul>
+<li>zk的数据模型也可以理解为Linux/Unix的文件目录：/usr/local/..</li>
+<li>每一个节点都称之为znode，它可以有子节点，也可以有数据。</li>
+<li>每个节点分为临时节点和永久节点，临时节点在客户端断开后消失。</li>
+<li>每个zk节点都有各自的版本号，可以通过命令行来显示节点信息。</li>
+<li>每当节点数据发生变化，那么该节点的版本号会累加（乐观锁）。</li>
+<li>删除/修改过时？？节点，版本号不匹配则会报错。</li>
+<li>每个zk节点存储的数据不宜过大，几K即可。</li>
+<li>节点可以设置权限acl，可以通过权限来限制用户的访问。</li>
+</ul>
+
+<h1 id="zk作用体现">zk作用体现</h1>
+
+<ol>
+<li>master节点选举，主节点挂了以后，从节点就会接手工作，并且保证这个节点是唯一的，这也是所谓首脑模式，从而保证我们的集群是高可用的。</li>
+<li>统一配置文件管理，即只需要部署一台服务器，就可以把相同的配置文件同步更新到其他所有服务器，此操作在云计算中用的特别多（假设修改了redis统一配置）</li>
+<li>发布与订阅。类似消息队列MQ（amq，rmq...），dubbo发布者把数据存在znode上，订阅至会读取这个数据。</li>
+<li>提供分布式锁，分布式环境中不同进程之间争夺资源，类似于多线程中的锁。</li>
+<li>集群管理，集群中保证数据的强一致性。</li>
+</ol>
+
+<h1 id="zk特性-watcher机制">zk特性——watcher机制</h1>
+
+<ol>
+<li>针对每个节点的操作，都会有一个监督者--&gt;watcher。</li>
+<li>当监控的某个对象（znode）发生了变化，就会触发watcher事件。</li>
+<li>zk中的watcher是一次性的，触发后立即销毁。</li>
+<li>父节点，子节点增删改都能够触发其watcher。</li>
+<li>针对不同类型的操作，触发的watcher事件也不同：1）（子）节点创建事件。2）（子）节点删除事件。3）（子）节点数据变化事件。</li>
+</ol>
+
+<h1 id="acl的构成">ACL的构成</h1>
+
+<ol>
+<li>zk的ACL通过[scheme : id : permissions]来构成权限列表</li>
+</ol>
+
+<p>scheme：代表采用的某种权限机制</p>
+
+<p>id：代表允许访问的用户</p>
+
+<p>permissions：权限组合字符串</p>
+
+<h2 id="scheme">scheme</h2>
+
+<ol>
+<li>world：world下只有一个id，即只有一个用户，也就是anyone，那么组合的写法就是world:anyone:[permissions]</li>
+<li>auth：代表认证登录，需要注册用户有权限就可以，形式为auth:user:password:[permissions]</li>
+<li>digest：需要对密码加密才能访问，组合形式为digest:username:BASE64(SHA!(password)):[permissions]</li>
+</ol>
+
+<p>简而言之，auth与digest的区别就是，前者明文，后者密文</p>
+
+<p>setAcl  /path auth:username:password:cdrwa</p>
+
+<p>与</p>
+
+<p>setAcl  /path auth:username:BASE64(SHA!(password)):cdrwa</p>
+
+<p>是等价的，在通过</p>
+
+<p>addauth digest username:password后都能操作指定节点的权限。</p>
+
+<h2 id="permissions权限字符串缩写-crdwa">permissions权限字符串缩写 crdwa</h2>
+
+<p>c：创建子节点</p>
+
+<p>r：获取节点/子节点</p>
+
+<p>d：删除子节点</p>
+
+<p>w：设置节点数据</p>
+
+<p>a：设置权限</p>
+
+<p>world:anyone:cdrwa</p>
+
+<p>auth:user:pwd:cdrwa</p>
+
+<p>digest:user:BASE64(SHA1(pwd)):cdrwa</p>
+
+<p>addauth digest user:pwd</p>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://blog.yellowpal.win/tags/zookeeper/">zookeeper</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>我的一方天地</span>
+  </div>
+</footer>
+
+
+
+<script src="https://blog.yellowpal.win/js/jquery-3.3.1.min.js"></script>
+<script src="https://blog.yellowpal.win/js/zozo.js"></script>
+<script src="https://blog.yellowpal.win/js/highlight.pack.js"></script>
+<link  href="https://blog.yellowpal.win/css/fancybox.min.css" rel="stylesheet">
+<script src="https://blog.yellowpal.win/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-145838473-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+</body>
+</html>
