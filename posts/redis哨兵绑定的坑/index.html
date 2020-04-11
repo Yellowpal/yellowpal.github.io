@@ -19,17 +19,17 @@
   
 
   
-  <link rel="canonical" href="blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/"/>
+  <link rel="canonical" href="//blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/"/>
 
   
 
   <title>Redis哨兵bind配置的坑 &middot; Yellowpal的小破站</title>
 
-  <link rel="shortcut icon" href="blog.yellowpal.win/images/favicon.ico"/>
-  <link rel="stylesheet" href="blog.yellowpal.win/css/animate.min.css"/>
-  <link rel="stylesheet" href="blog.yellowpal.win/css/remixicon.css"/>
-  <link rel="stylesheet" href="blog.yellowpal.win/css/zozo.css"/>
-  <link rel="stylesheet" href="blog.yellowpal.win/css/highlight.css"/>
+  <link rel="shortcut icon" href="//blog.yellowpal.win/images/favicon.ico"/>
+  <link rel="stylesheet" href="//blog.yellowpal.win/css/animate.min.css"/>
+  <link rel="stylesheet" href="//blog.yellowpal.win/css/remixicon.css"/>
+  <link rel="stylesheet" href="//blog.yellowpal.win/css/zozo.css"/>
+  <link rel="stylesheet" href="//blog.yellowpal.win/css/highlight.css"/>
 
   
   
@@ -42,19 +42,19 @@
     <ul>
       
       <li>
-        <a href="blog.yellowpal.win/">首页</a>
+        <a href="/">首页</a>
       </li>
       
       <li>
-        <a href="blog.yellowpal.win/categories/">归档</a>
+        <a href="/categories/">归档</a>
       </li>
       
       <li>
-        <a href="blog.yellowpal.win/tags/">标签</a>
+        <a href="/tags/">标签</a>
       </li>
       
       <li>
-        <a href="blog.yellowpal.win/about/">关于</a>
+        <a href="/about/">关于</a>
       </li>
       
     </ul>
@@ -68,9 +68,9 @@
   <div class="site_title_container">
     <div class="site_title">
       <h1>
-        <a href="blog.yellowpal.win/">
+        <a href="//blog.yellowpal.win">
           <span>Yellowpal的小破站</span>
-          <img src="blog.yellowpal.win/images/logo.svg"/>
+          <img src="//blog.yellowpal.win/images/logo.svg"/>
         </a>
       </h1>
     </div>
@@ -82,7 +82,7 @@
         <a href="https://github.com/Yellowpal" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
         
         
-        <a href="blog.yellowpal.win/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+        <a href="//blog.yellowpal.win/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
     <div class="post_page">
       <div class="post animated fadeInDown">
         <div class="post_title post_detail_title">
-          <h2><a href='blog.yellowpal.win/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/'>Redis哨兵bind配置的坑</a></h2>
+          <h2><a href='/posts/redis%E5%93%A8%E5%85%B5%E7%BB%91%E5%AE%9A%E7%9A%84%E5%9D%91/'>Redis哨兵bind配置的坑</a></h2>
           <span class="date">2020.03.17</span>
         </div>
         <div class="post_content markdown"><p>最近项目里需要对redis的主从搭建哨兵监控，其中遇到了一个redis 4.0.X的坑。因为之前在本地虚拟机测试搭建的时候用的是redis 5.0的，当时把哨兵的配置拷贝到4.0的时候遇到的问题是 <strong>哨兵之间一直无法进行通信</strong>。其中关键的配置是bind的配置，在4.0下bind的IP配置需要将回环地址写在最后，5.0没这个问题，所以导致我卡在这个地方很久。关键的配置实例如下：</p>
@@ -114,7 +114,7 @@
               <span class="field tags">
                 <i class="remixicon-stack-line"></i>
                 
-                <a href="blog.yellowpal.win/tags/redis/">redis</a>
+                <a href="//blog.yellowpal.win/tags/redis/">redis</a>
                 
               </span>
             </div>
@@ -141,11 +141,11 @@
 
 
 
-<script src="blog.yellowpal.win/js/jquery-3.3.1.min.js"></script>
-<script src="blog.yellowpal.win/js/zozo.js"></script>
-<script src="blog.yellowpal.win/js/highlight.pack.js"></script>
-<link  href="blog.yellowpal.win/css/fancybox.min.css" rel="stylesheet">
-<script src="blog.yellowpal.win/js/fancybox.min.js"></script>
+<script src="//blog.yellowpal.win/js/jquery-3.3.1.min.js"></script>
+<script src="//blog.yellowpal.win/js/zozo.js"></script>
+<script src="//blog.yellowpal.win/js/highlight.pack.js"></script>
+<link  href="//blog.yellowpal.win/css/fancybox.min.css" rel="stylesheet">
+<script src="//blog.yellowpal.win/js/fancybox.min.js"></script>
 
 <script>hljs.initHighlightingOnLoad()</script>
 

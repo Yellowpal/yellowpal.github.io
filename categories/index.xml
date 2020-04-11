@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Yellowpal的小破站</title>
-    <link>blog.yellowpal.win/categories/</link>
+    <link>//blog.yellowpal.win/categories/</link>
     <description>Recent content in Categories on Yellowpal的小破站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 14 Aug 2019 19:48:25 +0000</lastBuildDate>
     
-	<atom:link href="blog.yellowpal.win/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//blog.yellowpal.win/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《深入理解Java虚拟机》</title>
-      <link>blog.yellowpal.win/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+      <link>//blog.yellowpal.win/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
       <pubDate>Wed, 14 Aug 2019 19:48:25 +0000</pubDate>
       
-      <guid>blog.yellowpal.win/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
+      <guid>//blog.yellowpal.win/categories/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
       <description></description>
     </item>
     
