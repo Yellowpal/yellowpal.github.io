@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Yellowpal的小破站</title>
-    <link>http://blog.yellowpal.win/tags/</link>
+    <link>blog.yellowpal.win/tags/</link>
     <description>Recent content in Tags on Yellowpal的小破站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 Apr 2020 22:20:22 +0800</lastBuildDate>
     
-	<atom:link href="http://blog.yellowpal.win/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="blog.yellowpal.win/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>黑苹果</title>
-      <link>http://blog.yellowpal.win/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/</link>
+      <link>blog.yellowpal.win/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/</link>
       <pubDate>Fri, 03 Apr 2020 22:20:22 +0800</pubDate>
       
-      <guid>http://blog.yellowpal.win/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/</guid>
+      <guid>blog.yellowpal.win/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redis</title>
-      <link>http://blog.yellowpal.win/tags/redis/</link>
+      <link>blog.yellowpal.win/tags/redis/</link>
       <pubDate>Tue, 17 Mar 2020 11:34:33 +0800</pubDate>
       
-      <guid>http://blog.yellowpal.win/tags/redis/</guid>
+      <guid>blog.yellowpal.win/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>zookeeper</title>
-      <link>http://blog.yellowpal.win/tags/zookeeper/</link>
+      <link>blog.yellowpal.win/tags/zookeeper/</link>
       <pubDate>Sat, 17 Aug 2019 15:03:13 +0000</pubDate>
       
-      <guid>http://blog.yellowpal.win/tags/zookeeper/</guid>
+      <guid>blog.yellowpal.win/tags/zookeeper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>http://blog.yellowpal.win/tags/java/</link>
+      <link>blog.yellowpal.win/tags/java/</link>
       <pubDate>Wed, 14 Aug 2019 19:48:25 +0000</pubDate>
       
-      <guid>http://blog.yellowpal.win/tags/java/</guid>
+      <guid>blog.yellowpal.win/tags/java/</guid>
       <description></description>
     </item>
     
