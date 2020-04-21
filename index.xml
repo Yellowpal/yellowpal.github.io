@@ -6,10 +6,19 @@
     <description>Recent content on Yellowpal的小破站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Apr 2020 22:20:22 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2020 21:43:45 +0800</lastBuildDate>
     
 	<atom:link href="//blog.yellowpal.win/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>伪3500组一台ITX黑苹果</title>
+      <link>//blog.yellowpal.win/posts/%E4%BC%AA3500%E7%BB%84%E4%B8%80%E5%8F%B0itx%E9%BB%91%E8%8B%B9%E6%9E%9C/</link>
+      <pubDate>Sun, 12 Apr 2020 21:43:45 +0800</pubDate>
+      
+      <guid>//blog.yellowpal.win/posts/%E4%BC%AA3500%E7%BB%84%E4%B8%80%E5%8F%B0itx%E9%BB%91%E8%8B%B9%E6%9E%9C/</guid>
+      <description>身为一个贫穷的程序员一直想体验Mac系统，因此2019年年中的时候东拼西凑组了这台ITX黑苹果，到现在用了也差不多满一年了。期间貌似黑苹果热度越来越高，AMD现在也能装上黑苹果，无线网卡的价格也基本翻</description>
+    </item>
     
     <item>
       <title>黑苹果升级后删除Boot MAC OS Install From Macintosh启动项</title>
