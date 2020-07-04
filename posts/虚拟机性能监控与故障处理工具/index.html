@@ -1,104 +1,98 @@
 <!DOCTYPE html>
 <html lang="zh-cn" >
 <head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Yellow" />
+	
+	
+	
+	<title>虚拟机性能监控与故障处理工具 ｜ Yellowpal的小破站</title>
+	
+    
+    
+    <meta name="description" content="1. 主要命令监控工具用途 名称 主要作用 jps JVM Process Status Tool， 显示指定系统内所有HotSpot虚拟机进程 jstat JVM Statistics Monitoring Tool，用于手机HotSpot虚拟机各方面的运行数据 jinfo Configuration Info for Java，显示虚拟机配置信息 jmap Memory Map for" />
+    
 
-  
-  <meta name="author"
-        content="Yellow"/>
+    
+    
+    <meta name="keywords" content="Hugo, Yellowpal, 博客" />
+    
 
-  
-  <meta name="description" content="1. 主要命令监控工具用途 名称 主要作用 jps JVM Process Status Tool， 显示指定系统内所有HotSpot虚拟机进程 jstat JVM Statistics Monitoring Tool，用于手机HotSpot虚拟机各方面的运行数据 jinfo Configuration Info for Java，显示虚拟机配置信息 jmap Memory Map for"/>
-  
+	
+    
+    <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico" />
 
-  
-  
-  <meta name="keywords" content="Hugo, Yellowpal, 博客"/>
-  
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.wincss/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/highlight.css" />
 
-  
-  <link rel="canonical" href="https://blog.yellowpal.win/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/"/>
-
-  
-
-  <title>虚拟机性能监控与故障处理工具 &middot; Yellowpal的小破站</title>
-
-  <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico"/>
-  <link rel="stylesheet" href="https://blog.yellowpal.win/css/animate.min.css"/>
-  <link rel="stylesheet" href="https://blog.yellowpal.win/css/remixicon.css"/>
-  <link rel="stylesheet" href="https://blog.yellowpal.win/css/zozo.css"/>
-  <link rel="stylesheet" href="https://blog.yellowpal.win/css/highlight.css"/>
-
-  
-  
+    
+    
 </head>
 
 <body>
-<div class="main animated">
-  <div class="nav_container animated fadeInDown">
-  <div class="site_nav" id="site_nav">
-    <ul>
-      
-      <li>
-        <a href="/">首页</a>
-      </li>
-      
-      <li>
-        <a href="/categories/">归档</a>
-      </li>
-      
-      <li>
-        <a href="/tags/">标签</a>
-      </li>
-      
-      <li>
-        <a href="/about/">关于</a>
-      </li>
-      
-    </ul>
-  </div>
-  <div class="menu_icon">
-    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
-  </div>
-</div>
-
-  <div class="header animated fadeInDown">
-  <div class="site_title_container">
-    <div class="site_title">
-      <h1>
-        <a href="https://blog.yellowpal.win">
-          <span>Yellowpal的小破站</span>
-          <img src="https://blog.yellowpal.win/images/logo.svg"/>
-        </a>
-      </h1>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">首页</a>
+            </li>
+            
+            <li>
+                <a href="/categories/">归档</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">标签</a>
+            </li>
+            
+            <li>
+                <a href="/about/">关于</a>
+            </li>
+            
+        </ul>
     </div>
-    <div class="description">
-      <p class="sub_title">热爱生命，敬畏自然</p>
-      <div class="my_socials">
-        
-        
-        <a href="https://github.com/Yellowpal" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
-        
-        
-        <a href="https://blog.yellowpal.win/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
-      </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
     </div>
-  </div>
 </div>
-
-  <div class="content">
-    <div class="post_page">
-      <div class="post animated fadeInDown">
-        <div class="post_title post_detail_title">
-          <h2><a href='/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/'>虚拟机性能监控与故障处理工具</a></h2>
-          <span class="date">2019.08.14</span>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="https://blog.yellowpal.win">
+                    <span>Yellowpal的小破站</span>
+                </a>
+            </h1>
         </div>
-        <div class="post_content markdown">
-
-<h1 id="1-主要命令监控工具用途">1. 主要命令监控工具用途</h1>
-
+        <div class="description">
+            <p class="sub_title">热爱生命，敬畏自然</p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/Yellowpal" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="https://blog.yellowpal.win/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E4%B8%8E%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/'>虚拟机性能监控与故障处理工具</a></h2>
+                        <span class="date">2019.08.14</span>
+                    </div>
+                    <div class="post_content markdown"><h1 id="1-主要命令监控工具用途">1. 主要命令监控工具用途</h1>
 <table>
 <thead>
 <tr>
@@ -106,317 +100,262 @@
 <th>主要作用</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>jps</td>
 <td>JVM Process Status Tool， 显示指定系统内所有HotSpot虚拟机进程</td>
 </tr>
-
 <tr>
 <td>jstat</td>
 <td>JVM Statistics Monitoring Tool，用于手机HotSpot虚拟机各方面的运行数据</td>
 </tr>
-
 <tr>
 <td>jinfo</td>
 <td>Configuration Info for Java，显示虚拟机配置信息</td>
 </tr>
-
 <tr>
 <td>jmap</td>
 <td>Memory Map for Java，生成虚拟机的内存转储快照（heapdump文件）</td>
 </tr>
-
 <tr>
 <td>jhat</td>
 <td>JVM Heap Dump Browser， 用于分析heapdump文件，它会建立一个HTTP/HTML服务器，让用户可以在浏览器上查看分析结果</td>
 </tr>
-
 <tr>
 <td>jstack</td>
 <td>Stack Trace for Java， 显示虚拟机的线程快照</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="1-1-jps-虚拟机进程状况工具">1.1 jps 虚拟机进程状况工具</h2>
-
-<pre><code class="language-bash">jps [options] [hostid]
-</code></pre>
-
-<table>
+<h2 id="11-jps-虚拟机进程状况工具">1.1 jps 虚拟机进程状况工具</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jps <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>hostid<span style="color:#f92672">]</span>
+</code></pre></div><table>
 <thead>
 <tr>
 <th>选项</th>
 <th>作用</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>-q</td>
 <td>只输出LVMID，省略主类的名称</td>
 </tr>
-
 <tr>
 <td>-m</td>
 <td>输出虚拟机进程启动时传递给主类main()函数的参数</td>
 </tr>
-
 <tr>
 <td>-l</td>
 <td>输出主类的全名，如果进程执行的是jar包，输出jar路径</td>
 </tr>
-
 <tr>
 <td>-v</td>
 <td>输出虚拟机进程启动时JVM参数</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="1-2-jstat-虚拟机统计信息监控工具">1.2 jstat 虚拟机统计信息监控工具</h2>
-
-<pre><code class="language-bash">jstat [options vmid [interval[s|ms]] [count]]
-</code></pre>
-
-<table>
+<h2 id="12-jstat-虚拟机统计信息监控工具">1.2 jstat 虚拟机统计信息监控工具</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jstat <span style="color:#f92672">[</span>options vmid <span style="color:#f92672">[</span>interval<span style="color:#f92672">[</span>s|ms<span style="color:#f92672">]]</span> <span style="color:#f92672">[</span>count<span style="color:#f92672">]]</span>
+</code></pre></div><table>
 <thead>
 <tr>
 <th>选项</th>
 <th>作用</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>-class</td>
 <td>监视类装载、卸载数量、总空间以及类装载所耗费的时间</td>
 </tr>
-
 <tr>
 <td>-gc</td>
 <td>监视Java堆状况，包括Eden区、两个survivor、老年代、永久代等的容量、已用空间、GC时间合计等信息</td>
 </tr>
-
 <tr>
 <td>-gccapacity</td>
 <td>监视内容与-gc基本相同，但输出主要关注Java堆各个区域使用到的最大、最小空间内</td>
 </tr>
-
 <tr>
 <td>-gcutil</td>
 <td>监视内容与-gc基本相同，但输出主要关注已使用空间占总空间的百分比</td>
 </tr>
-
 <tr>
 <td>-gccause</td>
 <td>与-gcutil功能一样，但是会额外输出导致上一次GC产生的原因</td>
 </tr>
-
 <tr>
 <td>-gcnew</td>
 <td>监视新生代GC状况</td>
 </tr>
-
 <tr>
 <td>-gcnewcapacity</td>
 <td>监视内容与-gcnew基本相同，输出主要关注使用到的最大、最小空间</td>
 </tr>
-
 <tr>
 <td>-gcold</td>
 <td>监视老年代GC状况</td>
 </tr>
-
 <tr>
 <td>-gcoldcapacity</td>
 <td>监视内容与-gcold基本相同，输出主要关注使用到的最大、最小空间</td>
 </tr>
-
 <tr>
 <td>-gcpermcapacity</td>
 <td>输出永久代使用到的最大、最小空间</td>
 </tr>
-
 <tr>
 <td>-compiler</td>
 <td>输出JIT编译器编译过的方法、耗时等信息</td>
 </tr>
-
 <tr>
 <td>-printcompilation</td>
 <td>输出已经被JIT编译的方法</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="1-3-jinfo-java配置信息工具">1.3 jinfo Java配置信息工具</h2>
-
-<pre><code class="language-bash">jinfo [option] pid
-</code></pre>
-
-<h2 id="1-4-jmap-java内存映像工具">1.4 jmap Java内存映像工具</h2>
-
-<pre><code class="language-bash">jmap [option] vmid
-</code></pre>
-
-<table>
+<h2 id="13-jinfo-java配置信息工具">1.3 jinfo Java配置信息工具</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jinfo <span style="color:#f92672">[</span>option<span style="color:#f92672">]</span> pid
+</code></pre></div><h2 id="14-jmap-java内存映像工具">1.4 jmap Java内存映像工具</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jmap <span style="color:#f92672">[</span>option<span style="color:#f92672">]</span> vmid
+</code></pre></div><table>
 <thead>
 <tr>
 <th>选项</th>
 <th>作用</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>-dump</td>
-<td>生成Java堆转储快照。格式为：-dump:[live,]format=b,file=<filename>,其中live子参数说明是否只dump出存活的对象</td>
+<td>生成Java堆转储快照。格式为：-dump:[live,]format=b,file=<!-- raw HTML omitted -->,其中live子参数说明是否只dump出存活的对象</td>
 </tr>
-
 <tr>
 <td>-finalizerinfo</td>
 <td>显示在F-Queue中等待Finalizer线程执行finalize方法的对象，只在Linux/Solaris平台下有效</td>
 </tr>
-
 <tr>
 <td>-heap</td>
 <td>显示Java堆详细信息，如使用哪种回收器、参数配置、分代状况等。只在Linux/Solaris平台下有效</td>
 </tr>
-
 <tr>
 <td>-histo</td>
 <td>显示堆中对象统计信息，包括类、实例数量、合计容量</td>
 </tr>
-
 <tr>
 <td>-permstat</td>
 <td>以ClassLoader为统计口径显示永久代内存状态。只在Linux/Solaris平台下有效</td>
 </tr>
-
 <tr>
 <td>-F</td>
 <td>当虚拟机进程对-dump选项没有响应时，可使用这个选项强制生成dump快照。只在Linux/Solaris平台下有效</td>
 </tr>
 </tbody>
 </table>
-
-<h2 id="1-5-jhat-虚拟机堆转储快照分析工具">1.5 jhat 虚拟机堆转储快照分析工具</h2>
-
-<h2 id="1-6-jstack-java堆栈跟踪工具">1.6 jstack Java堆栈跟踪工具</h2>
-
-<pre><code class="language-bash">jstack [option] vmid
-</code></pre>
-
-<table>
+<h2 id="15-jhat-虚拟机堆转储快照分析工具">1.5 jhat 虚拟机堆转储快照分析工具</h2>
+<h2 id="16-jstack-java堆栈跟踪工具">1.6 jstack Java堆栈跟踪工具</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jstack <span style="color:#f92672">[</span>option<span style="color:#f92672">]</span> vmid
+</code></pre></div><table>
 <thead>
 <tr>
 <th>选项</th>
 <th>作用</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>-F</td>
 <td>当正常输出的请求不被响应时，强制输出线程堆栈</td>
 </tr>
-
 <tr>
 <td>-I</td>
 <td>除堆栈外，显示关于锁的附加信息</td>
 </tr>
-
 <tr>
 <td>-m</td>
 <td>如果调用到本地方法的话，可以显示C/C++的堆栈</td>
 </tr>
 </tbody>
 </table>
-
 <h1 id="2-jdk可视化工具">2. JDK可视化工具</h1>
-
-<h2 id="2-1-jconsole-java监控与管理控制台">2.1 JConsole Java监控与管理控制台</h2>
-
-<h2 id="2-2-visualvm-多合一故障处理工具">2.2 VisualVm 多合一故障处理工具</h2>
+<h2 id="21-jconsole-java监控与管理控制台">2.1 JConsole Java监控与管理控制台</h2>
+<h2 id="22-visualvm-多合一故障处理工具">2.2 VisualVm 多合一故障处理工具</h2>
 </div>
-        <div class="post_footer">
-          
-          <div class="meta">
-            <div class="info">
-              <span class="field tags">
-                <i class="remixicon-stack-line"></i>
+                    <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://blog.yellowpal.win/tags/java/">Java</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
                 
-                <a href="https://blog.yellowpal.win/tags/java/">Java</a>
                 
-              </span>
+                <div class="doc_comments"></div>
+                
             </div>
-          </div>
-          
         </div>
-      </div>
-      
-      
     </div>
-  </div>
-  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
-</div>
-<footer class="footer">
-  <div class="powered_by">
-    <a href="https://zeuk.me">Designed by Zeuk,</a>
-    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
-  </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+        <a href="https://varkai.com">Designed by VarKai,</a>
+        <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+    </div>
 
-  <div class="footer_slogan">
-    <span>我的一方天地</span>
-  </div>
+    <div class="footer_slogan">
+        <span>我的一方天地</span>
+    </div>
 </footer>
-
-
-
-<script src="https://blog.yellowpal.win/js/jquery-3.3.1.min.js"></script>
-<script src="https://blog.yellowpal.win/js/zozo.js"></script>
-<script src="https://blog.yellowpal.win/js/highlight.pack.js"></script>
-<link  href="https://blog.yellowpal.win/css/fancybox.min.css" rel="stylesheet">
+    <script src="https://blog.yellowpal.win/js/jquery-3.5.1.min.js"></script>
+<link href="https://blog.yellowpal.win/css/fancybox.min.css" rel="stylesheet">
 <script src="https://blog.yellowpal.win/js/fancybox.min.js"></script>
+<script src="https://blog.yellowpal.win/js/zozo.js"></script>
 
-<script>hljs.initHighlightingOnLoad()</script>
 
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
 
-  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[\[','\]\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-
-MathJax.Hub.Queue(function() {
-    
-    
-    
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
 
 <style>
-code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-}
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
 </style>
 
 
@@ -432,8 +371,6 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-
-
-
 </body>
+
 </html>
