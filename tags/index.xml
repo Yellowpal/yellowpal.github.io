@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Yellowpal的小破站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 12 Apr 2020 21:43:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2020 14:21:24 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yellowpal.win/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>N1盒子</title>
+      <link>https://blog.yellowpal.win/tags/n1%E7%9B%92%E5%AD%90/</link>
+      <pubDate>Sat, 01 Aug 2020 14:21:24 +0800</pubDate>
+      
+      <guid>https://blog.yellowpal.win/tags/n1%E7%9B%92%E5%AD%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenWrt</title>
+      <link>https://blog.yellowpal.win/tags/openwrt/</link>
+      <pubDate>Sat, 01 Aug 2020 14:21:24 +0800</pubDate>
+      
+      <guid>https://blog.yellowpal.win/tags/openwrt/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>黑苹果</title>
