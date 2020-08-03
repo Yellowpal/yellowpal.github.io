@@ -21,10 +21,10 @@
     
 
 	
-
+    
     <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.wincss/normalize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/zozo.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
@@ -33,7 +33,6 @@
     
     
 </head>
-
 
 <body>
     <div class="main animate__animated animate__fadeInDown">
@@ -93,56 +92,78 @@
                         <h2><a href='/posts/n1%E7%9B%92%E5%AD%90%E4%B8%BB%E8%B7%AF%E7%94%B1%E6%97%81%E8%B7%AF%E7%94%B1%E8%AE%BE%E7%BD%AE/'>N1盒子主路由&amp;旁路由设置</a></h2>
                         <span class="date">2020.08.01</span>
                     </div>
-                    <div class="post_content markdown"><p>N1刷的是恩山论坛flippy的固件<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，具体的刷机教程就不写了，主要聊聊主路由的旁路由的设置，当然不仅仅适用于N1，其他的基于OpenWrt的单网口设备设置也基本大同小异。</p>
+                    <div class="post_content markdown">
+
+<p>N1刷的是恩山论坛flippy的固件<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>，具体的刷机教程就不写了，主要聊聊主路由的旁路由的设置，当然不仅仅适用于N1，其他的基于OpenWrt的单网口设备设置也基本大同小异。</p>
+
 <h1 id="1-旁路由">1. 旁路由</h1>
+
 <p>旁路由的优点是对现存的网络架构没有任何变动，只是相当于局域网内新接入了一台设备，实现各种网络增强服务。按我个人的理解也可以分为以下两种：</p>
+
 <ul>
-<li>
-<p>非全局</p>
-<p>局域网内部分设备的流量通过旁路由访问出去，需要将设备的网关地址手动设置为旁路由的IP。好处是旁路由宕机只影响部分设备。</p>
-</li>
-<li>
-<p>全局</p>
-<p>局域网内所有的设备流量都经过旁路由，需要将主路由的DHCP上将通报的网关配置为旁路由的IP。好处是不需要每台设备去设置网关地址。</p>
-</li>
+<li>非全局</li>
 </ul>
-<h2 id="11-网络架构">1.1 网络架构</h2>
+
+<p>局域网内部分设备的流量通过旁路由访问出去，需要将设备的网关地址手动设置为旁路由的IP。好处是旁路由宕机只影响部分设备。</p>
+
+<ul>
+<li>全局</li>
+</ul>
+
+<p>局域网内所有的设备流量都经过旁路由，需要将主路由的DHCP上将通报的网关配置为旁路由的IP。好处是不需要每台设备去设置网关地址。</p>
+
+<h2 id="1-1-网络架构">1.1 网络架构</h2>
+
 <p>这种架构下主路由做拨号和DHCP（DHCP也可以交给旁路由），旁路由上跑各种网络服务。接线大致是：光猫接主路由wan口，1）有交换机的话主路由lan接到交换机上，旁路由接到交换机上。2）没有交换机的旁路由直接接主路由的lan口。如下图：
-<img src="/images/net/support.png" alt="旁路由网络架构"></p>
-<h2 id="12-旁路由配置">1.2 旁路由配置</h2>
+<img src="/images/net/support.png" alt="旁路由网络架构" /></p>
+
+<h2 id="1-2-旁路由配置">1.2 旁路由配置</h2>
+
 <p>网络-&gt;接口-&gt;lan-&gt;修改。主要需要修改基本设置和DHCP服务器。</p>
+
 <ul>
 <li>基本设置：协议选静态地址，IPv4地址填和主路由一个局域网的IP就行。如主路由是192.168.1.1，这里就可以填192.168.1.2。网关填写主路由的IP地址。</li>
 <li>DHCP服务器：我这里是关掉旁路由上的DHCP交给主路由负责了，所有这里勾选忽略此接口。</li>
 </ul>
+
 <p>后面保存&amp;应用就算配置完成了。按这种配置以我上面的分类是以非全局的模式运行的，这个时候可以先试试将设备的网关地址设为旁路由的IP看看是否能正常上网，后面再根据自己的需要选择全局或者非全局。</p>
+
 <h1 id="2-主路由">2. 主路由</h1>
+
 <p>由于N1只有单个网卡，所以wan和lan需要共用一个物理网口。这种架构下就需要对原来的架构做出变动。</p>
-<h2 id="21-网络架构">2.1 网络架构</h2>
+
+<h2 id="2-1-网络架构">2.1 网络架构</h2>
+
 <p>这个架构下N1负责拨号、DHCP和各种网络服务，原来的路由器只作为AP（无线接入点），用以手机这些无线设备的网络连接。接线大致是：1）有交换机：光猫接交换机上，N1接交换机，路由器lan口接交换机。2）没有交换机：光猫接路由器lan口，N1接路由器lan口。如下图：</p>
-<p><img src="/images/net/master.png" alt="主路由网络架构"></p>
-<h2 id="22-n1配置">2.2 N1配置</h2>
+
+<p><img src="/images/net/master.png" alt="主路由网络架构" /></p>
+
+<h2 id="2-2-n1配置">2.2 N1配置</h2>
+
 <p>网络模块下需要新建一个wan口，物理设置需要选择和lan同一个适配器。lan口需要取消桥接，开启DHCP功能。配置如下图：</p>
-<p><img src="/images/net/wan.png" alt="wan口配置"></p>
-<p><img src="/images/net/lan.png" alt="lan口配置"></p>
-<h2 id="23-ap配置">2.3 AP配置</h2>
+
+<p><img src="/images/net/wan.png" alt="wan口配置" /></p>
+
+<p><img src="/images/net/lan.png" alt="lan口配置" /></p>
+
+<h2 id="2-3-ap配置">2.3 AP配置</h2>
+
 <ul>
-<li>
-<p>设置lan口IP地址和N1同一个局域网。如N1是192.168.1.1，则AP则可设置为192.168.1.2</p>
-</li>
-<li>
-<p>关闭DHCP功能。</p>
-</li>
+<li><p>设置lan口IP地址和N1同一个局域网。如N1是192.168.1.1，则AP则可设置为192.168.1.2</p></li>
+
+<li><p>关闭DHCP功能。</p></li>
 </ul>
+
 <p>此处可参考1.2旁路由的配置。</p>
-<section class="footnotes" role="doc-endnotes">
-<hr>
+<div class="footnotes">
+
+<hr />
+
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=981406&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D21">恩山论坛flippy固件</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
+<li id="fn:1"><a href="https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=981406&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D21">恩山论坛flippy固件</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
 </ol>
-</section>
+</div>
 </div>
                     <div class="post_footer">
                         

@@ -21,10 +21,10 @@
     
 
 	
-
+    
     <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.wincss/normalize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/zozo.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
@@ -33,7 +33,6 @@
     
     
 </head>
-
 
 <body>
     <div class="main animate__animated animate__fadeInDown">
@@ -94,8 +93,11 @@
                         <span class="date">2020.04.03</span>
                     </div>
                     <div class="post_content markdown"><p>最近黑苹果升级10.15.4的时候中间提示失败了，但是重新进入系统是提示升级成功了，不过启动引导残留了下来了个Boot MAC OS Install from Macintosh的选项，最要命的是还是默认启动项，网上搜索一番无果后自己查看了下本地目录的文件，最终找到了需要删除的文件在这个目录下/System/Volumes/Data，删除命令如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo rm -rf /System/Volumes/Data/macOS<span style="color:#ae81ff">\ </span>Install<span style="color:#ae81ff">\ </span>Data
-</code></pre></div><p>之后重启一切正常，残留的引导项成功被删了。</p>
+
+<pre><code class="language-shell">sudo rm -rf /System/Volumes/Data/macOS\ Install\ Data
+</code></pre>
+
+<p>之后重启一切正常，残留的引导项成功被删了。</p>
 </div>
                     <div class="post_footer">
                         

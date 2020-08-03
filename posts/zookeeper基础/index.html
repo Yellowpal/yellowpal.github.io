@@ -21,10 +21,10 @@
     
 
 	
-
+    
     <link rel="shortcut icon" href="https://blog.yellowpal.win/images/favicon.ico" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.wincss/normalize.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://blog.yellowpal.win/css/zozo.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
@@ -33,7 +33,6 @@
     
     
 </head>
-
 
 <body>
     <div class="main animate__animated animate__fadeInDown">
@@ -93,28 +92,26 @@
                         <h2><a href='/posts/zookeeper%E5%9F%BA%E7%A1%80/'>zookeeper基础</a></h2>
                         <span class="date">2019.08.17</span>
                     </div>
-                    <div class="post_content markdown"><h1 id="zoocfg配置文件">zoo.cfg配置文件</h1>
+                    <div class="post_content markdown">
+
+<h1 id="zoo-cfg配置文件">zoo.cfg配置文件</h1>
+
 <ul>
-<li>
-<p>tickTime：用于计算的时间单元。比如session超时：N*tickTime</p>
-</li>
-<li>
-<p>initLImit：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tickTime的倍数来表示</p>
-</li>
-<li>
-<p>syncLimit：用于集群，master主节点与从节点之间发送消息，请求和应答时间的长度。（心跳机制）</p>
-</li>
-<li>
-<p>dataDir：数据存放位置，必须配置。</p>
-</li>
-<li>
-<p>dataLogDir：日志目录，如果不配置会和dataDir公用。</p>
-</li>
-<li>
-<p>clientPort：连接服务器的端口，默认2181</p>
-</li>
+<li><p>tickTime：用于计算的时间单元。比如session超时：N*tickTime</p></li>
+
+<li><p>initLImit：用于集群，允许从节点连接并同步到master节点的初始化连接时间，以tickTime的倍数来表示</p></li>
+
+<li><p>syncLimit：用于集群，master主节点与从节点之间发送消息，请求和应答时间的长度。（心跳机制）</p></li>
+
+<li><p>dataDir：数据存放位置，必须配置。</p></li>
+
+<li><p>dataLogDir：日志目录，如果不配置会和dataDir公用。</p></li>
+
+<li><p>clientPort：连接服务器的端口，默认2181</p></li>
 </ul>
+
 <h1 id="基本概念">基本概念</h1>
+
 <ul>
 <li>zk的数据模型也可以理解为Linux/Unix的文件目录：/usr/local/..</li>
 <li>每一个节点都称之为znode，它可以有子节点，也可以有数据。</li>
@@ -125,52 +122,77 @@
 <li>每个zk节点存储的数据不宜过大，几K即可。</li>
 <li>节点可以设置权限acl，可以通过权限来限制用户的访问。</li>
 </ul>
+
 <h1 id="zk作用体现">zk作用体现</h1>
+
 <ol>
 <li>master节点选举，主节点挂了以后，从节点就会接手工作，并且保证这个节点是唯一的，这也是所谓首脑模式，从而保证我们的集群是高可用的。</li>
 <li>统一配置文件管理，即只需要部署一台服务器，就可以把相同的配置文件同步更新到其他所有服务器，此操作在云计算中用的特别多（假设修改了redis统一配置）</li>
-<li>发布与订阅。类似消息队列MQ（amq，rmq&hellip;），dubbo发布者把数据存在znode上，订阅至会读取这个数据。</li>
+<li>发布与订阅。类似消息队列MQ（amq，rmq...），dubbo发布者把数据存在znode上，订阅至会读取这个数据。</li>
 <li>提供分布式锁，分布式环境中不同进程之间争夺资源，类似于多线程中的锁。</li>
 <li>集群管理，集群中保证数据的强一致性。</li>
 </ol>
-<h1 id="zk特性watcher机制">zk特性——watcher机制</h1>
+
+<h1 id="zk特性-watcher机制">zk特性——watcher机制</h1>
+
 <ol>
-<li>针对每个节点的操作，都会有一个监督者&ndash;&gt;watcher。</li>
+<li>针对每个节点的操作，都会有一个监督者--&gt;watcher。</li>
 <li>当监控的某个对象（znode）发生了变化，就会触发watcher事件。</li>
 <li>zk中的watcher是一次性的，触发后立即销毁。</li>
 <li>父节点，子节点增删改都能够触发其watcher。</li>
 <li>针对不同类型的操作，触发的watcher事件也不同：1）（子）节点创建事件。2）（子）节点删除事件。3）（子）节点数据变化事件。</li>
 </ol>
+
 <h1 id="acl的构成">ACL的构成</h1>
+
 <ol>
-<li>
-<p>zk的ACL通过[scheme : id : permissions]来构成权限列表</p>
-<p>scheme：代表采用的某种权限机制</p>
-<p>id：代表允许访问的用户</p>
-<p>permissions：权限组合字符串</p>
-</li>
+<li>zk的ACL通过[scheme : id : permissions]来构成权限列表</li>
 </ol>
+
+<p>scheme：代表采用的某种权限机制</p>
+
+<p>id：代表允许访问的用户</p>
+
+<p>permissions：权限组合字符串</p>
+
 <h2 id="scheme">scheme</h2>
+
 <ol>
 <li>world：world下只有一个id，即只有一个用户，也就是anyone，那么组合的写法就是world:anyone:[permissions]</li>
 <li>auth：代表认证登录，需要注册用户有权限就可以，形式为auth:user:password:[permissions]</li>
 <li>digest：需要对密码加密才能访问，组合形式为digest:username:BASE64(SHA!(password)):[permissions]</li>
 </ol>
+
 <p>简而言之，auth与digest的区别就是，前者明文，后者密文</p>
+
 <p>setAcl  /path auth:username:password:cdrwa</p>
+
 <p>与</p>
+
 <p>setAcl  /path auth:username:BASE64(SHA!(password)):cdrwa</p>
+
 <p>是等价的，在通过</p>
+
 <p>addauth digest username:password后都能操作指定节点的权限。</p>
+
 <h2 id="permissions权限字符串缩写-crdwa">permissions权限字符串缩写 crdwa</h2>
+
 <p>c：创建子节点</p>
+
 <p>r：获取节点/子节点</p>
+
 <p>d：删除子节点</p>
+
 <p>w：设置节点数据</p>
+
 <p>a：设置权限</p>
+
 <p>world:anyone:cdrwa</p>
+
 <p>auth:user:pwd:cdrwa</p>
+
 <p>digest:user:BASE64(SHA1(pwd)):cdrwa</p>
+
 <p>addauth digest user:pwd</p>
 </div>
                     <div class="post_footer">
